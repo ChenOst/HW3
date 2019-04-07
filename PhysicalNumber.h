@@ -10,6 +10,7 @@ namespace ariel{
             Unit unit;
         public:
             PhysicalNumber(double number, Unit unit);
+            ~PhysicalNumber();
 
             PhysicalNumber operator+ (const PhysicalNumber physicalNumber);
             PhysicalNumber& operator+= (const PhysicalNumber physicalNumber);

@@ -29,7 +29,7 @@ int main() {
     PhysicalNumber pn3(13, Unit::KM);
     PhysicalNumber pn4(7, Unit::SEC);
     PhysicalNumber pn5(9, Unit::MIN);
-    PhysicalNumber pn6(225, Unit::HOUR);
+    PhysicalNumber pn6(12, Unit::HOUR);
     PhysicalNumber pn7(2, Unit::G);
     PhysicalNumber pn8(140, Unit::KG);
     PhysicalNumber pn9(84, Unit::TON);
@@ -67,17 +67,26 @@ int main() {
     .CHECK_OUTPUT(pn3, "13[km]")
     .CHECK_OUTPUT(pn4, "7[sec]")
     .CHECK_OUTPUT(pn5, "9[min]")
-    .CHECK_OUTPUT(pn6, "225[hour]")
+    .CHECK_OUTPUT(pn6, "12[hour]")
     .CHECK_OUTPUT(pn7, "2[g]")
     .CHECK_OUTPUT(pn8, "140[kg]")
     .CHECK_OUTPUT(pn9, "84[ton]")
 
     .setname("My test - Compatible dimensions")
     .CHECK_OUTPUT(pn2+pn1, "5.25[m]")
-    .CHECK_OUTPUT(pn3+pn2, "13.005[km]")
+    .CHECK_OUTPUT(pn3+=pn2, "13.005[km]")
     .CHECK_OUTPUT(pn3, "13.005[km]")
-    .CHECK_OUTPUT(pn6-pn6, "0[hour]")
-    .CHECK_OUTPUT(pn7+pn8, "140002[g]")
+    .CHECK_OUTPUT(pn6-=pn6, "0[hour]")
+    .CHECK_OUTPUT(pn6, "0[hour]")
+    .CHECK_OUTPUT(pn2==pn2, true)
+    .CHECK_OUTPUT(pn7!=pn1, true)
+    .CHECK_OUTPUT(pn9>pn8, true)
+    .CHECK_OUTPUT(pn3<pn2, false)
+    .CHECK_OUTPUT(pn3<=pn1, false)
+    .CHECK_OUTPUT(pn5>=pn6, false)
+    .CHECK_OUTPUT(pn8==pn7, false)
+    .CHECK_OUTPUT(pn4++, "8[sec]")
+    .CHECK_OUTPUT(pn8--, "139[kg]")
 
     .setname("My test - Incompatible dimensions")
     .CHECK_THROWS(pn1+pn6)
