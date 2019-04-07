@@ -89,11 +89,11 @@ int main() {
     .CHECK_THROWS(pn7+pn2)
     .CHECK_THROWS(pn8-pn5)
     .CHECK_THROWS(pn9+pn4)
-    .CHECK_OK(istringstream("700[kg]") >> pn1)
-    .CHECK_OK(istringstream("700[kg]") >> pn3)
-    .CHECK_OK(istringstream("700[kg]") >> pn5)
-    .CHECK_OK(istringstream("700[kg]") >> pn7)
-    .CHECK_OK(istringstream("700[kg]") >> pn9)
+    .CHECK_OK(istringstream("61[kg]") >> pn1)
+    .CHECK_OK(istringstream("12[hour]") >> pn3)
+    .CHECK_OK(istringstream("45[min]") >> pn5)
+    .CHECK_OK(istringstream("16[km]") >> pn7)
+    .CHECK_OK(istringstream("4[g]") >> pn9)
 
       .setname("...")
 
