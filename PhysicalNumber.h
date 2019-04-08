@@ -12,12 +12,12 @@ namespace ariel{
             PhysicalNumber(double number, Unit unit);
             ~PhysicalNumber();
 
-            PhysicalNumber operator+ (const PhysicalNumber physicalNumber) const;
-            PhysicalNumber& operator+= (const PhysicalNumber physicalNumber);
+            PhysicalNumber operator+ (const PhysicalNumber& physicalNumber) const;
+            PhysicalNumber& operator+= (const PhysicalNumber& physicalNumber);
             PhysicalNumber& operator+() const;
 
-            PhysicalNumber operator- (const PhysicalNumber physicalNumber) const;
-            PhysicalNumber& operator-= (const PhysicalNumber physicalNumber);
+            PhysicalNumber operator- (const PhysicalNumber& physicalNumber) const;
+            PhysicalNumber& operator-= (const PhysicalNumber& physicalNumber);
             PhysicalNumber& operator-() const;
 
             bool operator< (const PhysicalNumber& physicalNumber) const;
