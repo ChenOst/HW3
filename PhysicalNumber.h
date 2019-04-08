@@ -32,6 +32,8 @@ namespace ariel{
 
             PhysicalNumber& operator++();
             PhysicalNumber& operator--();
+        
+            double convertUnit(const PhysicalNumber& physicalNumber1, const PhysicalNumber& physicalNumber2);
     };
             ostream& operator<< (ostream& oStream, const PhysicalNumber& physicalNumber);
             istream& operator>> (istream& iStream, PhysicalNumber& physicalNumber);
