@@ -20,12 +20,12 @@ namespace ariel{
             PhysicalNumber& operator-= (const PhysicalNumber physicalNumber);
             PhysicalNumber& operator-();
 
-            bool operator< (const PhysicalNumber& physicalNumber1, const PhysicalNumber& physicalNumber2);
-            bool operator> (const PhysicalNumber& physicalNumber1, const PhysicalNumber& physicalNumber2);
-            bool operator<= (const PhysicalNumber& physicalNumber1, const PhysicalNumber& physicalNumber2);
-            bool operator>= (const PhysicalNumber& physicalNumber1, const PhysicalNumber& physicalNumber2);
-            bool operator== (const PhysicalNumber& physicalNumber1, const PhysicalNumber& physicalNumber2);
-            bool operator!= (const PhysicalNumber& physicalNumber1, const PhysicalNumber& physicalNumber2);
+            bool operator< (const PhysicalNumber& physicalNumber);
+            bool operator> (const PhysicalNumber& physicalNumber);
+            bool operator<= (const PhysicalNumber& physicalNumber);
+            bool operator>= (const PhysicalNumber& physicalNumber);
+            bool operator== (const PhysicalNumber& physicalNumber);
+            bool operator!= (const PhysicalNumber& physicalNumber);
 
             friend ostream& operator<< (ostream& oStream, const PhysicalNumber& physicalNumber);
             friend istream& operator>> (istream& iStream, PhysicalNumber& physicalNumber);
