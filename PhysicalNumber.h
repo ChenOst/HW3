@@ -8,9 +8,11 @@ namespace ariel{
         private:
             double number;
             Unit unit;
+            bool isValid(const PhysicalNumber& physicalNumber1, const PhysicalNumber& physicalNumber2) const;
+
         public:
             PhysicalNumber(double number, Unit unit);
-            ~PhysicalNumber();
+            //~PhysicalNumber();
 
             PhysicalNumber operator+ (const PhysicalNumber& physicalNumber) const;
             PhysicalNumber& operator+= (const PhysicalNumber& physicalNumber);
