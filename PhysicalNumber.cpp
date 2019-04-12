@@ -444,5 +444,4 @@ istream& ariel::operator>>(istream& iStream, PhysicalNumber& physicalNumber){
 
 //end - Strams Functions
 
-}
 
