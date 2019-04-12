@@ -165,6 +165,7 @@ double PhysicalNumber::convertUnit(const PhysicalNumber& physicalNumber1, const 
     else{
         throw std::invalid_argument( "The data is from different categorys(units)\n" );
     }
+    return physicalNumber2.number;
 }//end - double PhysicalNumber::convertUnit
 
 //
@@ -330,6 +331,20 @@ bool PhysicalNumber::operator!=(const PhysicalNumber& physicalNumber) const{
 //end - Boolean Functions
 
 //
+//Add one to number/Subtract one of number
+//
+//Operator ++
+PhysicalNumber& PhysicalNumber::operator++(){
+    this->number = this->number+1;
+    return *this;
+}
+//Operator --
+PhysicalNumber& PhysicalNumber::operator--(){
+    this->number = this->number-1;
+    return *this;
+}
+
+//
 //Strams Functions
 //
 //OStream
@@ -432,18 +447,5 @@ istream& ariel::operator>>(istream& iStream, PhysicalNumber& physicalNumber){
 
 //end - Strams Functions
 
-//
-//Add one to number/Subtract one of number
-//
-//Operator ++
-PhysicalNumber& PhysicalNumber::operator++(){
-    this->number = this->number+1;
-    return *this;
-}
-//Operator --
-PhysicalNumber& PhysicalNumber::operator--(){
-    this->number = this->number-1;
-    return *this;
-}
 }
 
