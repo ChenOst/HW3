@@ -175,7 +175,7 @@ double PhysicalNumber::convertUnit(const PhysicalNumber& physicalNumber1, const 
 PhysicalNumber PhysicalNumber::operator+(const PhysicalNumber& physicalNumber) const{
     if(isValid(*this, physicalNumber)){
         double converted = convertUnit(*this, physicalNumber);
-        return PhysicalNumber(this.number + converted, this.unit);
+        return PhysicalNumber(this->number + converted, this->unit);
     }
     else{
         throw std::invalid_argument( "Invalid unit data\n" );
@@ -186,7 +186,7 @@ PhysicalNumber PhysicalNumber::operator+(const PhysicalNumber& physicalNumber) c
 PhysicalNumber& PhysicalNumber::operator+=(const PhysicalNumber& physicalNumber){
     if(isValid(*this, physicalNumber)){
         double converted = convertUnit(*this, physicalNumber);
-        this.number = this.number + converted;
+        this->number = this->number + converted;
         return *this;
     }
     else{
@@ -207,7 +207,7 @@ PhysicalNumber PhysicalNumber::operator+() const{
 PhysicalNumber PhysicalNumber::operator-(const PhysicalNumber& physicalNumber) const{
     if(isValid(*this, physicalNumber)){
         double converted = convertUnit(*this, physicalNumber);
-        return PhysicalNumber(this.number - converted, this.unit);
+        return PhysicalNumber(this->number - converted, this->unit);
     }
     else{
         throw std::invalid_argument( "Invalid unit data\n" );
@@ -217,7 +217,7 @@ PhysicalNumber PhysicalNumber::operator-(const PhysicalNumber& physicalNumber) c
 PhysicalNumber& PhysicalNumber::operator-=(const PhysicalNumber& physicalNumber){
     if(isValid(*this, physicalNumber)){
         double converted = convertUnit(*this, physicalNumber);
-        this.number = this.number - converted;
+        this->number = this->number - converted;
         return *this;
     }
     else{
