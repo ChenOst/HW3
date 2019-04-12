@@ -60,102 +60,102 @@ double PhysicalNumber::convertUnit(const PhysicalNumber& physicalNumber1, const 
     if(isValid(physicalNumber1, physicalNumber2)){
         if(physicalNumber1.unit == Unit::CM){
             if(physicalNumber2.unit == Unit::CM){
-                return physicalNumber2->number;
+                return physicalNumber2.number;
             }
             else if(physicalNumber2.unit == Unit::M){
-                return (physicalNumber2->number*100);
+                return (physicalNumber2.number*100);
             }
             else if(physicalNumber2.unit == Unit::KM){
-                return (physicalNumber2->number*100000);
+                return (physicalNumber2.number*100000);
             }
         }
         else if(physicalNumber1.unit == Unit::M){
             if(physicalNumber2.unit == Unit::M){
-                return physicalNumber2->number;
+                return physicalNumber2.number;
             }
             else if(physicalNumber2.unit == Unit::CM){
-                return (physicalNumber2->number/100);
+                return (physicalNumber2.number/100);
             }
             else if(physicalNumber2.unit == Unit::KM){
-                return (physicalNumber2->number*1000);
+                return (physicalNumber2.number*1000);
             }
         }
         else if(physicalNumber1.unit == Unit::KM){
             if(physicalNumber2.unit == Unit::KM){
-                return physicalNumber2->number;
+                return physicalNumber2.number;
             }
             else if(physicalNumber2.unit == Unit::CM){
-                return (physicalNumber2->number/100000);
+                return (physicalNumber2.number/100000);
             }
             else if(physicalNumber2.unit == Unit::M){
-                return (physicalNumber2->number/1000);
+                return (physicalNumber2.number/1000);
             }
         }
         else if(physicalNumber1.unit == Unit::SEC){
             if(physicalNumber2.unit == Unit::SEC){
-                return physicalNumber2->number;
+                return physicalNumber2.number;
             }
             else if(physicalNumber2.unit == Unit::MIN){
-                return (physicalNumber2->number*60);
+                return (physicalNumber2.number*60);
             }
             else if(physicalNumber2.unit == Unit::HOUR){
-                return (physicalNumber2->number*3600);
+                return (physicalNumber2.number*3600);
             }
         }
         else if(physicalNumber1.unit == Unit::MIN){
             if(physicalNumber2.unit == Unit::MIN){
-                return physicalNumber2->number;
+                return physicalNumber2.number;
             }
             else if(physicalNumber2.unit == Unit::SEC){
-                return (physicalNumber2->number/60);
+                return (physicalNumber2.number/60);
             }
             else if(physicalNumber2.unit == Unit::HOUR){
-                return (physicalNumber2->number*60);
+                return (physicalNumber2.number*60);
             }
         }
         else if(physicalNumber1.unit == Unit::HOUR){
             if(physicalNumber2.unit == Unit::HOUR){
-                return physicalNumber2->number;
+                return physicalNumber2.number;
             }
             else if(physicalNumber2.unit == Unit::SEC){
-                return (physicalNumber2->number/3600);
+                return (physicalNumber2.number/3600);
             }
             else if(physicalNumber2.unit == Unit::MIN){
-                return (physicalNumber2->number/60);
+                return (physicalNumber2.number/60);
             }
         }
         else if(physicalNumber1.unit == Unit::G){
             if(physicalNumber2.unit == Unit::G){
-                return physicalNumber2->number;
+                return physicalNumber2.number;
             }
             else if(physicalNumber2.unit == Unit::KG){
-                return (physicalNumber2->number*1000);
+                return (physicalNumber2.number*1000);
             }
             else if(physicalNumber2.unit == Unit::TON){
-                return (physicalNumber2->number*1000000);
+                return (physicalNumber2.number*1000000);
             }
         }
         else if(physicalNumber1.unit == Unit::KG){
             if(physicalNumber2.unit == Unit::KG){
-                return physicalNumber2->number;
+                return physicalNumber2.number;
             }
             else if(physicalNumber2.unit == Unit::G){
-                return (physicalNumber2->number/1000);
+                return (physicalNumber2.number/1000);
             }
             else if(physicalNumber2.unit == Unit::TON){
-                return (physicalNumber2->number*1000);
+                return (physicalNumber2.number*1000);
             }
             
         }
         else if(physicalNumber1.unit == Unit::TON){
             if(physicalNumber2.unit == Unit::TON){
-                return physicalNumber2->number;
+                return physicalNumber2.number;
             }
             else if(physicalNumber2.unit == Unit::G){
-                return (physicalNumber2->number/1000000);
+                return (physicalNumber2.number/1000000);
             }
             else if(physicalNumber2.unit == Unit::KG){
-                return (physicalNumber2->number/1000);
+                return (physicalNumber2.number/1000);
             }
         }
         else{
