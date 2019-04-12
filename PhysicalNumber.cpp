@@ -227,10 +227,10 @@ PhysicalNumber& PhysicalNumber::operator-=(const PhysicalNumber& physicalNumber)
 }
 //Change the sign of physicalNumber->number
 PhysicalNumber PhysicalNumber::operator-() const{
-    if(this.number < 0){
-        this.number = (this.number)*(-1);
+    if(this->number < 0){
+        this->number = (this.number)*(-1);
     }
-    return PhysicalNumber(this.number, this.unit);
+    return PhysicalNumber(this->number, this->unit);
 }
 //end - Subtract Functions
 
@@ -241,7 +241,7 @@ PhysicalNumber PhysicalNumber::operator-() const{
 bool PhysicalNumber::operator<(const PhysicalNumber& physicalNumber) const{
     if(isValid(*this, physicalNumber)){
         double converted = convertUnit(*this, physicalNumber);
-        if(this.number < converted){
+        if(this->number < converted){
             return true;
         }
         else{
@@ -256,7 +256,7 @@ bool PhysicalNumber::operator<(const PhysicalNumber& physicalNumber) const{
 bool PhysicalNumber::operator>(const PhysicalNumber& physicalNumber) const{
     if(isValid(*this, physicalNumber)){
         double converted = convertUnit(*this, physicalNumber);
-        if(this.number > converted){
+        if(this->number > converted){
             return true;
         }
         else{
@@ -271,7 +271,7 @@ bool PhysicalNumber::operator>(const PhysicalNumber& physicalNumber) const{
 bool PhysicalNumber::operator<=(const PhysicalNumber& physicalNumber) const{
     if(isValid(*this, physicalNumber)){
         double converted = convertUnit(*this, physicalNumber);
-        if(this.number <= converted){
+        if(this->number <= converted){
             return true;
         }
         else{
@@ -286,7 +286,7 @@ bool PhysicalNumber::operator<=(const PhysicalNumber& physicalNumber) const{
 bool PhysicalNumber::operator>=(const PhysicalNumber& physicalNumber) const{
     if(isValid(*this, physicalNumber)){
         double converted = convertUnit(*this, physicalNumber);
-        if(this.number >= converted){
+        if(this->number >= converted){
             return true;
         }
         else{
@@ -301,7 +301,7 @@ bool PhysicalNumber::operator>=(const PhysicalNumber& physicalNumber) const{
 bool PhysicalNumber::operator==(const PhysicalNumber& physicalNumber) const{
     if(isValid(*this, physicalNumber)){
         double converted = convertUnit(*this, physicalNumber);
-        if(this.number == converted){
+        if(this->number == converted){
             return true;
         }
         else{
@@ -316,7 +316,7 @@ bool PhysicalNumber::operator==(const PhysicalNumber& physicalNumber) const{
 bool PhysicalNumber::operator!=(const PhysicalNumber& physicalNumber) const{
     if(isValid(*this, physicalNumber)){
         double converted = convertUnit(*this, physicalNumber);
-        if(this.number != converted){
+        if(this->number != converted){
             return true;
         }
         else{
@@ -422,7 +422,7 @@ istream& ariel::operator>>(istream& iStream, PhysicalNumber& physicalNumber){
                 auto errorState = iStream.rdstate(); // remember error state
                 return iStream;
             }
-            physicalNumber->number = stringNum;
+            physicalNumber.number = stringNum;
         }
     else{
          auto errorState = iStream.rdstate();
