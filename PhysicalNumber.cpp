@@ -175,7 +175,7 @@ double PhysicalNumber::convertUnit(const PhysicalNumber& physicalNumber1, const 
 PhysicalNumber PhysicalNumber::operator+(const PhysicalNumber& physicalNumber) const{
     if(isValid(*this, physicalNumber)){
         double converted = convertUnit(*this, physicalNumber);
-        return PhysicalNumber(this->number + converted, this->unit);
+        return PhysicalNumber(this.number + converted, this.unit);
     }
     else{
         throw std::invalid_argument( "Invalid unit data\n" );
@@ -186,7 +186,7 @@ PhysicalNumber PhysicalNumber::operator+(const PhysicalNumber& physicalNumber) c
 PhysicalNumber& PhysicalNumber::operator+=(const PhysicalNumber& physicalNumber){
     if(isValid(*this, physicalNumber)){
         double converted = convertUnit(*this, physicalNumber);
-        this->number = this->number + converted;
+        this.number = this.number + converted;
         return *this;
     }
     else{
@@ -195,7 +195,7 @@ PhysicalNumber& PhysicalNumber::operator+=(const PhysicalNumber& physicalNumber)
 }
 //Change the sign of physicalNumber->number
 PhysicalNumber PhysicalNumber::operator+() const{
-    return PhysicalNumber(this->number, this->unit);
+    return PhysicalNumber(this.number, this.unit);
 }
 //end - Add Functions
 
@@ -207,7 +207,7 @@ PhysicalNumber PhysicalNumber::operator+() const{
 PhysicalNumber PhysicalNumber::operator-(const PhysicalNumber& physicalNumber) const{
     if(isValid(*this, physicalNumber)){
         double converted = convertUnit(*this, physicalNumber);
-        return PhysicalNumber(this->number - converted, this->unit);
+        return PhysicalNumber(this.number - converted, this.unit);
     }
     else{
         throw std::invalid_argument( "Invalid unit data\n" );
@@ -217,7 +217,7 @@ PhysicalNumber PhysicalNumber::operator-(const PhysicalNumber& physicalNumber) c
 PhysicalNumber& PhysicalNumber::operator-=(const PhysicalNumber& physicalNumber){
     if(isValid(*this, physicalNumber)){
         double converted = convertUnit(*this, physicalNumber);
-        this->number = this->number - converted;
+        this.number = this.number - converted;
         return *this;
     }
     else{
@@ -227,10 +227,10 @@ PhysicalNumber& PhysicalNumber::operator-=(const PhysicalNumber& physicalNumber)
 }
 //Change the sign of physicalNumber->number
 PhysicalNumber PhysicalNumber::operator-() const{
-    if(this->number < 0){
-        this->number = (this->number)*(-1);
+    if(this.number < 0){
+        this.number = (this.number)*(-1);
     }
-    return PhysicalNumber(this->number, this->unit);
+    return PhysicalNumber(this.number, this.unit);
 }
 //end - Subtract Functions
 
@@ -241,7 +241,7 @@ PhysicalNumber PhysicalNumber::operator-() const{
 bool PhysicalNumber::operator<(const PhysicalNumber& physicalNumber) const{
     if(isValid(*this, physicalNumber)){
         double converted = convertUnit(*this, physicalNumber);
-        if(this->number < converted){
+        if(this.number < converted){
             return true;
         }
         else{
@@ -256,7 +256,7 @@ bool PhysicalNumber::operator<(const PhysicalNumber& physicalNumber) const{
 bool PhysicalNumber::operator>(const PhysicalNumber& physicalNumber) const{
     if(isValid(*this, physicalNumber)){
         double converted = convertUnit(*this, physicalNumber);
-        if(this->number > converted){
+        if(this.number > converted){
             return true;
         }
         else{
@@ -271,7 +271,7 @@ bool PhysicalNumber::operator>(const PhysicalNumber& physicalNumber) const{
 bool PhysicalNumber::operator<=(const PhysicalNumber& physicalNumber) const{
     if(isValid(*this, physicalNumber)){
         double converted = convertUnit(*this, physicalNumber);
-        if(this->number <= converted){
+        if(this.number <= converted){
             return true;
         }
         else{
@@ -286,7 +286,7 @@ bool PhysicalNumber::operator<=(const PhysicalNumber& physicalNumber) const{
 bool PhysicalNumber::operator>=(const PhysicalNumber& physicalNumber) const{
     if(isValid(*this, physicalNumber)){
         double converted = convertUnit(*this, physicalNumber);
-        if(this->number >= converted){
+        if(this.number >= converted){
             return true;
         }
         else{
@@ -301,7 +301,7 @@ bool PhysicalNumber::operator>=(const PhysicalNumber& physicalNumber) const{
 bool PhysicalNumber::operator==(const PhysicalNumber& physicalNumber) const{
     if(isValid(*this, physicalNumber)){
         double converted = convertUnit(*this, physicalNumber);
-        if(this->number == converted){
+        if(this.number == converted){
             return true;
         }
         else{
@@ -316,7 +316,7 @@ bool PhysicalNumber::operator==(const PhysicalNumber& physicalNumber) const{
 bool PhysicalNumber::operator!=(const PhysicalNumber& physicalNumber) const{
     if(isValid(*this, physicalNumber)){
         double converted = convertUnit(*this, physicalNumber);
-        if(this->number != converted){
+        if(this.number != converted){
             return true;
         }
         else{
@@ -335,31 +335,31 @@ bool PhysicalNumber::operator!=(const PhysicalNumber& physicalNumber) const{
 //OStream
 ostream& ariel::operator<<(ostream& oStream, const PhysicalNumber& physicalNumber){
     if(physicalNumber.unit==Unit::CM){
-        return oStream << physicalNumber->number << "[CM]";
+        return oStream << physicalNumber.number << "[CM]";
     }
     else if(physicalNumber.unit==Unit::M){
-        return oStream << physicalNumber->number << "[M]";
+        return oStream << physicalNumber.number << "[M]";
     }
     else if(physicalNumber.unit==Unit::KM){
-        return oStream << physicalNumber->number << "[KM]";
+        return oStream << physicalNumber.number << "[KM]";
     }
     else if(physicalNumber.unit==Unit::SEC){
-        return oStream << physicalNumber->number << "[SEC]";
+        return oStream << physicalNumber.number << "[SEC]";
     }
     else if(physicalNumber.unit==Unit::MIN){
-        return oStream << physicalNumber->number << "[MIN]";
+        return oStream << physicalNumber.number << "[MIN]";
     }
     else if(physicalNumber.unit==Unit::HOUR){
-        return oStream << physicalNumber->number << "[HOUR]";
+        return oStream << physicalNumber.number << "[HOUR]";
     }
     else if(physicalNumber.unit==Unit::G){
-        return oStream << physicalNumber->number << "[G]";
+        return oStream << physicalNumber.number << "[G]";
     }
     else if(physicalNumber.unit==Unit::KG){
-        return oStream << physicalNumber->number << "[KG]";
+        return oStream << physicalNumber.number << "[KG]";
     }
     else if(physicalNumber.unit==Unit::TON){
-        return oStream << physicalNumber->number << "[TON]";
+        return oStream << physicalNumber.number << "[TON]";
     }
     else{
         throw std::invalid_argument( "Invalid unit data\n" );
