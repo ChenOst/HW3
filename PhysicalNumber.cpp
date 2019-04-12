@@ -347,31 +347,31 @@ PhysicalNumber& PhysicalNumber::operator--(){
 //OStream
 ostream& ariel::operator<<(ostream& oStream, const PhysicalNumber& physicalNumber){
     if(physicalNumber.unit==Unit::CM){
-        return oStream << physicalNumber.number << "[CM]";
+        return oStream << physicalNumber.number << "[cm]";
     }
     else if(physicalNumber.unit==Unit::M){
-        return oStream << physicalNumber.number << "[M]";
+        return oStream << physicalNumber.number << "[m]";
     }
     else if(physicalNumber.unit==Unit::KM){
-        return oStream << physicalNumber.number << "[KM]";
+        return oStream << physicalNumber.number << "[km]";
     }
     else if(physicalNumber.unit==Unit::SEC){
-        return oStream << physicalNumber.number << "[SEC]";
+        return oStream << physicalNumber.number << "[sec]";
     }
     else if(physicalNumber.unit==Unit::MIN){
-        return oStream << physicalNumber.number << "[MIN]";
+        return oStream << physicalNumber.number << "[min]";
     }
     else if(physicalNumber.unit==Unit::HOUR){
-        return oStream << physicalNumber.number << "[HOUR]";
+        return oStream << physicalNumber.number << "[hour]";
     }
     else if(physicalNumber.unit==Unit::G){
-        return oStream << physicalNumber.number << "[G]";
+        return oStream << physicalNumber.number << "[g]";
     }
     else if(physicalNumber.unit==Unit::KG){
-        return oStream << physicalNumber.number << "[KG]";
+        return oStream << physicalNumber.number << "[kg]";
     }
     else if(physicalNumber.unit==Unit::TON){
-        return oStream << physicalNumber.number << "[TON]";
+        return oStream << physicalNumber.number << "[ton]";
     }
     else{
         throw std::invalid_argument( "Invalid unit data\n" );
@@ -390,32 +390,32 @@ istream& ariel::operator>>(istream& iStream, PhysicalNumber& physicalNumber){
     open = myString.find("[");
     close = myString.find("]");
     if ((open != string::npos) && (close != string::npos)){
-        subString = myString.substr(open + 1, close - 1);
-        if(subString == "CM" ){
+        subString = myString.substr(open + 1, close - open - 1);
+        if(subString == "cm" ){
             physicalNumber.unit = Unit::CM;
         }
-        else if(subString =="M"){
+        else if(subString =="m"){
             physicalNumber.unit = Unit::M;
         }
-        else if(subString =="KM"){
+        else if(subString =="km"){
             physicalNumber.unit = Unit::KM;
         }
-        else if(subString =="SEC"){
+        else if(subString =="sec"){
             physicalNumber.unit = Unit::SEC;
         }
-        else if(subString =="MIN"){
+        else if(subString =="min"){
             physicalNumber.unit = Unit::MIN;
         }
-        else if(subString =="HOUR"){
+        else if(subString =="hour"){
             physicalNumber.unit = Unit::HOUR;
         }
-        else if(subString =="G"){
+        else if(subString =="g"){
             physicalNumber.unit = Unit::G;
         }
-        else if(subString =="KG"){
+        else if(subString =="kg"){
             physicalNumber.unit = Unit::KG;
         }
-        else if(subString =="TON"){
+        else if(subString =="ton"){
             physicalNumber.unit = Unit::TON;
         }
         else{
