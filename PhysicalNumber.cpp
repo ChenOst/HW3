@@ -436,6 +436,7 @@ istream& ariel::operator>>(istream& iStream, PhysicalNumber& physicalNumber){
             }
             physicalNumber.number = stringNum;
         }
+    }
     else{
          auto errorState = iStream.rdstate();
     }
