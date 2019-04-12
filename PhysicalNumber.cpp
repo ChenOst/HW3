@@ -228,7 +228,7 @@ PhysicalNumber& PhysicalNumber::operator-=(const PhysicalNumber& physicalNumber)
 //Change the sign of physicalNumber->number
 PhysicalNumber PhysicalNumber::operator-() const{
     if(this->number < 0){
-        this->number = -(this->number);
+        this->number = (this->number)*(-1);
     }
     return PhysicalNumber(this->number, this->unit);
 }
@@ -334,31 +334,31 @@ bool PhysicalNumber::operator!=(const PhysicalNumber& physicalNumber) const{
 //
 //OStream
 ostream& ariel::operator<<(ostream& oStream, const PhysicalNumber& physicalNumber){
-    if(physicalNumber->Unit==Unit::CM){
+    if(physicalNumber.unit==Unit::CM){
         return oStream << physicalNumber->number << "[CM]";
     }
-    else if(physicalNumber->Unit==Unit::M){
+    else if(physicalNumber.unit==Unit::M){
         return oStream << physicalNumber->number << "[M]";
     }
-    else if(physicalNumber->Unit==Unit::KM){
+    else if(physicalNumber.unit==Unit::KM){
         return oStream << physicalNumber->number << "[KM]";
     }
-    else if(physicalNumber->Unit==Unit::SEC){
+    else if(physicalNumber.unit==Unit::SEC){
         return oStream << physicalNumber->number << "[SEC]";
     }
-    else if(physicalNumber->Unit==Unit::MIN){
+    else if(physicalNumber.unit==Unit::MIN){
         return oStream << physicalNumber->number << "[MIN]";
     }
-    else if(physicalNumber->Unit==Unit::HOUR){
+    else if(physicalNumber.unit==Unit::HOUR){
         return oStream << physicalNumber->number << "[HOUR]";
     }
-    else if(physicalNumber->Unit==Unit::G){
+    else if(physicalNumber.unit==Unit::G){
         return oStream << physicalNumber->number << "[G]";
     }
-    else if(physicalNumber->Unit==Unit::KG){
+    else if(physicalNumber.unit==Unit::KG){
         return oStream << physicalNumber->number << "[KG]";
     }
-    else if(physicalNumber->Unit==Unit::TON){
+    else if(physicalNumber.unit==Unit::TON){
         return oStream << physicalNumber->number << "[TON]";
     }
     else{
