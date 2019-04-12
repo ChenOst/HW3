@@ -15,11 +15,11 @@ PhysicalNumber::PhysicalNumber(double number, Unit unit){
 //Checks if the units belong to the same category and if the unit data is valid
 bool PhysicalNumber::isValid(const PhysicalNumber& physicalNumber1, const PhysicalNumber& physicalNumber2) const{
     //Checks if both physical numbers belong to CM, M, KM category
-    if(physicalNumber1->unit == Unit::CM || physicalNumber1->unit == Unit::M || physicalNumber1->unit == Unit::KM){
-        if(physicalNumber2->unit == Unit::CM || physicalNumber2->unit == Unit::M || physicalNumber2->unit == Unit::KM){
+    if(physicalNumber1.unit == Unit::CM || physicalNumber1.unit == Unit::M || physicalNumber1.unit == Unit::KM){
+        if(physicalNumber2.unit == Unit::CM || physicalNumber2.unit == Unit::M || physicalNumber2.unit == Unit::KM){
             return true;
         }
-        else if(physicalNumber2->unit == Unit::SEC || physicalNumber2->unit == Unit::MIN || physicalNumber2->unit == Unit::HOUR || physicalNumber2->unit == Unit::G || physicalNumber2->unit == Unit::KG || physicalNumber2->unit == Unit::TON){
+        else if(physicalNumber2.unit == Unit::SEC || physicalNumber2.unit == Unit::MIN || physicalNumber2.unit == Unit::HOUR || physicalNumber2.unit == Unit::G || physicalNumber2.unit == Unit::KG || physicalNumber2.unit == Unit::TON){
             return false;
         }
         else{
@@ -27,11 +27,11 @@ bool PhysicalNumber::isValid(const PhysicalNumber& physicalNumber1, const Physic
         }
     }
     //Checks if both physical numbers belong to SEC, MIN, HOUR category
-    else if(physicalNumber1->unit == Unit::SEC || physicalNumber1->unit == Unit::MIN || physicalNumber1->unit == Unit::HOUR){
-        if(physicalNumber2->unit == Unit::SEC || physicalNumber2->unit == Unit::MIN || physicalNumber2->unit == Unit::HOUR){
+    else if(physicalNumber1.unit == Unit::SEC || physicalNumber1.unit == Unit::MIN || physicalNumber1.unit == Unit::HOUR){
+        if(physicalNumber2.unit == Unit::SEC || physicalNumber2.unit == Unit::MIN || physicalNumber2.unit == Unit::HOUR){
             return true;
         }
-        else if(physicalNumber2->unit == Unit::CM || physicalNumber2->unit == Unit::M || physicalNumber2->unit == Unit::KM || physicalNumber2->unit == Unit::G || physicalNumber2->unit == Unit::KG || physicalNumber2->unit == Unit::TON){
+        else if(physicalNumber2.unit == Unit::CM || physicalNumber2.unit == Unit::M || physicalNumber2.unit == Unit::KM || physicalNumber2.unit == Unit::G || physicalNumber2.unit == Unit::KG || physicalNumber2.unit == Unit::TON){
             return false;
         }
         else{
@@ -39,11 +39,11 @@ bool PhysicalNumber::isValid(const PhysicalNumber& physicalNumber1, const Physic
         }
     }
     //Checks if both physical numbers belong to G, KG, TON category
-    else if(physicalNumber1->unit == Unit::G || physicalNumber1->unit == Unit::KG || physicalNumber1->unit == Unit::TON){
-        if(physicalNumber2->unit == Unit::G || physicalNumber2->unit == Unit::KG || physicalNumber2->unit == Unit::TON){
+    else if(physicalNumber1.unit == Unit::G || physicalNumber1.unit == Unit::KG || physicalNumber1.unit == Unit::TON){
+        if(physicalNumber2.unit == Unit::G || physicalNumber2.unit == Unit::KG || physicalNumber2.unit == Unit::TON){
             return true;
         }
-        else if(physicalNumber2->unit == Unit::CM || physicalNumber2->unit == Unit::M || physicalNumber2->unit == Unit::KM || physicalNumber2->unit == Unit::SEC || physicalNumber2->unit == Unit::MIN || physicalNumber2->unit == Unit::HOUR){
+        else if(physicalNumber2.unit == Unit::CM || physicalNumber2.unit == Unit::M || physicalNumber2.unit == Unit::KM || physicalNumber2.unit == Unit::SEC || physicalNumber2.unit == Unit::MIN || physicalNumber2.unit == Unit::HOUR){
             return false;
         }
         else{
