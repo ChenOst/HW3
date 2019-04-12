@@ -196,7 +196,7 @@ PhysicalNumber& PhysicalNumber::operator+=(const PhysicalNumber& physicalNumber)
 }
 //Change the sign of physicalNumber->number
 PhysicalNumber PhysicalNumber::operator+() const{
-    return PhysicalNumber(this.number, this.unit);
+    return PhysicalNumber(this->number, this->unit);
 }
 //end - Add Functions
 
@@ -228,10 +228,7 @@ PhysicalNumber& PhysicalNumber::operator-=(const PhysicalNumber& physicalNumber)
 }
 //Change the sign of physicalNumber->number
 PhysicalNumber PhysicalNumber::operator-() const{
-    if(this->number < 0){
-        this->number = (this.number)*(-1);
-    }
-    return PhysicalNumber(this->number, this->unit);
+    return PhysicalNumber(-1*this->number, this->unit);
 }
 //end - Subtract Functions
 
