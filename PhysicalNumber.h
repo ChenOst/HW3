@@ -14,20 +14,20 @@ namespace ariel{
             PhysicalNumber(double number, Unit unit);
             //~PhysicalNumber();
 
-            PhysicalNumber operator+ (const PhysicalNumber& physicalNumber) const;
-            PhysicalNumber& operator+= (const PhysicalNumber& physicalNumber);
+            PhysicalNumber operator+(const PhysicalNumber& physicalNumber) const;
+            PhysicalNumber& operator+=(const PhysicalNumber& physicalNumber);
             PhysicalNumber operator+() const;
 
-            PhysicalNumber operator- (const PhysicalNumber& physicalNumber) const;
-            PhysicalNumber& operator-= (const PhysicalNumber& physicalNumber);
+            PhysicalNumber operator-(const PhysicalNumber& physicalNumber) const;
+            PhysicalNumber& operator-=(const PhysicalNumber& physicalNumber);
             PhysicalNumber operator-() const;
 
-            bool operator< (const PhysicalNumber& physicalNumber) const;
-            bool operator> (const PhysicalNumber& physicalNumber) const;
-            bool operator<= (const PhysicalNumber& physicalNumber) const;
-            bool operator>= (const PhysicalNumber& physicalNumber) const;
-            bool operator== (const PhysicalNumber& physicalNumber) const;
-            bool operator!= (const PhysicalNumber& physicalNumber) const;
+            bool operator<(const PhysicalNumber& physicalNumber) const;
+            bool operator>(const PhysicalNumber& physicalNumber) const;
+            bool operator<=(const PhysicalNumber& physicalNumber) const;
+            bool operator>=(const PhysicalNumber& physicalNumber) const;
+            bool operator==(const PhysicalNumber& physicalNumber) const;
+            bool operator!=(const PhysicalNumber& physicalNumber) const;
 
             friend ostream& operator<< (ostream& oStream, const PhysicalNumber& physicalNumber);
             friend istream& operator>> (istream& iStream, PhysicalNumber& physicalNumber);
@@ -37,8 +37,8 @@ namespace ariel{
         
             double convertUnit(const PhysicalNumber& physicalNumber1, const PhysicalNumber& physicalNumber2) const;
     };
-            ostream& operator<< (ostream& oStream, const PhysicalNumber& physicalNumber);
-            istream& operator>> (istream& iStream, PhysicalNumber& physicalNumber);
+            ostream& operator<<(ostream& oStream, const PhysicalNumber& physicalNumber);
+            istream& operator>>(istream& iStream, PhysicalNumber& physicalNumber);
 
 };
 

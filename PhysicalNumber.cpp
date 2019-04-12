@@ -1,16 +1,19 @@
 #include <iostream>
+#include <sstream>
 #include <stdexcept>
 #include "string"
 #include "PhysicalNumber.h"
+#include "Unit.h"
 using namespace std;
+using namespace ariel;
 
-ariel::PhysicalNumber::PhysicalNumber(double number, Unit unit){
+PhysicalNumber::PhysicalNumber(double number, Unit unit){
     this->number=number;
     this->unit=unit;
-}//end - ariel::PhysicalNumber::PhysicalNumber
+}//end - PhysicalNumber::PhysicalNumber
 
 //Checks if the units belong to the same category and if the unit data is valid
-bool ariel::PhysicalNumber::isValid(const PhysicalNumber& physicalNumber1, const PhysicalNumber& physicalNumber2) const{
+bool PhysicalNumber::isValid(const PhysicalNumber& physicalNumber1, const PhysicalNumber& physicalNumber2) const{
     //Checks if both physical numbers belong to CM, M, KM category
     if(physicalNumber1->unit == Unit::CM || physicalNumber1->unit == Unit::M || physicalNumber1->unit == Unit::KM){
         if(physicalNumber2->unit == Unit::CM || physicalNumber2->unit == Unit::M || physicalNumber2->unit == Unit::KM){
@@ -50,10 +53,10 @@ bool ariel::PhysicalNumber::isValid(const PhysicalNumber& physicalNumber1, const
     else{
         throw std::invalid_argument( "physicalNumber1 : Invalid unit data\n" );
     }
-}//end - bool ariel::PhysicalNumber::isValid
+}//end - bool PhysicalNumber::isValid
 
 //Convert the number depending on the unit type
-double ariel::PhysicalNumber::convertUnit(const PhysicalNumber& physicalNumber1, const PhysicalNumber& physicalNumber2) const{
+double PhysicalNumber::convertUnit(const PhysicalNumber& physicalNumber1, const PhysicalNumber& physicalNumber2) const{
     if(isValid(physicalNumber1, physicalNumber2)){
         if(physicalNumber1->unit == Unit::CM){
             if(physicalNumber2->unit == Unit::CM){
@@ -162,16 +165,16 @@ double ariel::PhysicalNumber::convertUnit(const PhysicalNumber& physicalNumber1,
     else{
         throw std::invalid_argument( "The data is from different categorys(units)\n" );
     }
-}//end - double ariel::PhysicalNumber::convertUnit
+}//end - double PhysicalNumber::convertUnit
 
 //
 //Add Functions
 //
 
 //Add two numbers
-ariel::PhysicalNumber::PhysicalNumber ariel::PhysicalNumber::operator+ (const PhysicalNumber& physicalNumber) const{
-    if(isValid(this, physicalNumber)){
-        double converted = convertUnit(this, physicalNumber);
+PhysicalNumber PhysicalNumber::operator+(const PhysicalNumber& physicalNumber) const{
+    if(isValid(*this, physicalNumber)){
+        double converted = convertUnit(*this, physicalNumber);
         return PhysicalNumber(this->number + converted, this->unit);
     }
     else{
@@ -180,9 +183,9 @@ ariel::PhysicalNumber::PhysicalNumber ariel::PhysicalNumber::operator+ (const Ph
 }
 
 //Change this number by adding the physicalNumber->number to it
-ariel::PhysicalNumber::PhysicalNumber& ariel::PhysicalNumber::operator+= (const PhysicalNumber& physicalNumber){
-    if(isValid(this, physicalNumber)){
-        double converted = convertUnit(this, physicalNumber);
+PhysicalNumber& PhysicalNumber::operator+=(const PhysicalNumber& physicalNumber){
+    if(isValid(*this, physicalNumber)){
+        double converted = convertUnit(*this, physicalNumber);
         this->number = this->number + converted;
         return *this;
     }
@@ -191,7 +194,7 @@ ariel::PhysicalNumber::PhysicalNumber& ariel::PhysicalNumber::operator+= (const 
     }
 }
 //Change the sign of physicalNumber->number
-ariel::PhysicalNumber::PhysicalNumber ariel::PhysicalNumber::operator+() const{
+PhysicalNumber PhysicalNumber::operator+() const{
     return PhysicalNumber(this->number, this->unit);
 }
 //end - Add Functions
@@ -201,9 +204,9 @@ ariel::PhysicalNumber::PhysicalNumber ariel::PhysicalNumber::operator+() const{
 //
 
 //Subtract two numbers
-ariel::PhysicalNumber::PhysicalNumber ariel::PhysicalNumber::operator- (const PhysicalNumber& physicalNumber) const{
-    if(isValid(this, physicalNumber)){
-        double converted = convertUnit(this, physicalNumber);
+PhysicalNumber PhysicalNumber::operator-(const PhysicalNumber& physicalNumber) const{
+    if(isValid(*this, physicalNumber)){
+        double converted = convertUnit(*this, physicalNumber);
         return PhysicalNumber(this->number - converted, this->unit);
     }
     else{
@@ -211,9 +214,9 @@ ariel::PhysicalNumber::PhysicalNumber ariel::PhysicalNumber::operator- (const Ph
     }
 }
 //Change this number by subtract the physicalNumber->number from it
-ariel::PhysicalNumber::PhysicalNumber& ariel::PhysicalNumber::operator-= (const PhysicalNumber& physicalNumber){
-    if(isValid(this, physicalNumber)){
-        double converted = convertUnit(this, physicalNumber);
+PhysicalNumber& PhysicalNumber::operator-=(const PhysicalNumber& physicalNumber){
+    if(isValid(*this, physicalNumber)){
+        double converted = convertUnit(*this, physicalNumber);
         this->number = this->number - converted;
         return *this;
     }
@@ -223,7 +226,7 @@ ariel::PhysicalNumber::PhysicalNumber& ariel::PhysicalNumber::operator-= (const 
     
 }
 //Change the sign of physicalNumber->number
-ariel::PhysicalNumber::PhysicalNumber ariel::PhysicalNumber::operator-() const{
+PhysicalNumber PhysicalNumber::operator-() const{
     if(this->number < 0){
         this->number = -(this->number);
     }
@@ -235,9 +238,9 @@ ariel::PhysicalNumber::PhysicalNumber ariel::PhysicalNumber::operator-() const{
 //Boolean Functions
 //
 //Operator <
-bool ariel::PhysicalNumber::operator< (const PhysicalNumber& physicalNumber) const{
-    if(isValid(this, physicalNumber)){
-        double converted = convertUnit(this, physicalNumber);
+bool PhysicalNumber::operator<(const PhysicalNumber& physicalNumber) const{
+    if(isValid(*this, physicalNumber)){
+        double converted = convertUnit(*this, physicalNumber);
         if(this->number < converted){
             returh true;
         }
@@ -250,9 +253,9 @@ bool ariel::PhysicalNumber::operator< (const PhysicalNumber& physicalNumber) con
     }
 }
 //Operator >
-bool ariel::PhysicalNumber::operator> (const PhysicalNumber& physicalNumber) const{
-    if(isValid(this, physicalNumber)){
-        double converted = convertUnit(this, physicalNumber);
+bool PhysicalNumber::operator>(const PhysicalNumber& physicalNumber) const{
+    if(isValid(*this, physicalNumber)){
+        double converted = convertUnit(*this, physicalNumber);
         if(this->number > converted){
             returh true;
         }
@@ -265,9 +268,9 @@ bool ariel::PhysicalNumber::operator> (const PhysicalNumber& physicalNumber) con
     }
 }
 //Operator <=
-bool ariel::PhysicalNumber::operator<= (const PhysicalNumber& physicalNumber) const{
-    if(isValid(this, physicalNumber)){
-        double converted = convertUnit(this, physicalNumber);
+bool PhysicalNumber::operator<=(const PhysicalNumber& physicalNumber) const{
+    if(isValid(*this, physicalNumber)){
+        double converted = convertUnit(*this, physicalNumber);
         if(this->number <= converted){
             return true;
         }
@@ -280,9 +283,9 @@ bool ariel::PhysicalNumber::operator<= (const PhysicalNumber& physicalNumber) co
     }
 }
 //Operator >=
-bool ariel::PhysicalNumber::operator>= (const PhysicalNumber& physicalNumber) const{
-    if(isValid(this, physicalNumber)){
-        double converted = convertUnit(this, physicalNumber);
+bool PhysicalNumber::operator>=(const PhysicalNumber& physicalNumber) const{
+    if(isValid(*this, physicalNumber)){
+        double converted = convertUnit(*this, physicalNumber);
         if(this->number >= converted){
             return true;
         }
@@ -295,9 +298,9 @@ bool ariel::PhysicalNumber::operator>= (const PhysicalNumber& physicalNumber) co
     }
 }
 //Operator ==
-bool ariel::PhysicalNumber::operator== (const PhysicalNumber& physicalNumber) const{
-    if(isValid(this, physicalNumber)){
-        double converted = convertUnit(this, physicalNumber);
+bool PhysicalNumber::operator==(const PhysicalNumber& physicalNumber) const{
+    if(isValid(*this, physicalNumber)){
+        double converted = convertUnit(*this, physicalNumber);
         if(this->number == converted){
             return true;
         }
@@ -310,9 +313,9 @@ bool ariel::PhysicalNumber::operator== (const PhysicalNumber& physicalNumber) co
     }
 }
 //Operator !=
-bool ariel::PhysicalNumber::operator!= (const PhysicalNumber& physicalNumber) const{
-    if(isValid(this, physicalNumber)){
-        double converted = convertUnit(this, physicalNumber);
+bool PhysicalNumber::operator!=(const PhysicalNumber& physicalNumber) const{
+    if(isValid(*this, physicalNumber)){
+        double converted = convertUnit(*this, physicalNumber);
         if(this->number != converted){
             return true;
         }
@@ -330,25 +333,115 @@ bool ariel::PhysicalNumber::operator!= (const PhysicalNumber& physicalNumber) co
 //Strams Functions
 //
 //OStream
-friend ostream& ariel::PhysicalNumber::operator<< (ostream& oStream, const PhysicalNumber& physicalNumber){
-    return *ostream;
+ostream& ariel::operator<<(ostream& oStream, const PhysicalNumber& physicalNumber){
+    if(physicalNumber->Unit==Unit::CM){
+        return oStream << physicalNumber->number << "[CM]";
+    }
+    else if(physicalNumber->Unit==Unit::M){
+        return oStream << physicalNumber->number << "[M]";
+    }
+    else if(physicalNumber->Unit==Unit::KM){
+        return oStream << physicalNumber->number << "[KM]";
+    }
+    else if(physicalNumber->Unit==Unit::SEC){
+        return oStream << physicalNumber->number << "[SEC]";
+    }
+    else if(physicalNumber->Unit==Unit::MIN){
+        return oStream << physicalNumber->number << "[MIN]";
+    }
+    else if(physicalNumber->Unit==Unit::HOUR){
+        return oStream << physicalNumber->number << "[HOUR]";
+    }
+    else if(physicalNumber->Unit==Unit::G){
+        return oStream << physicalNumber->number << "[G]";
+    }
+    else if(physicalNumber->Unit==Unit::KG){
+        return oStream << physicalNumber->number << "[KG]";
+    }
+    else if(physicalNumber->Unit==Unit::TON){
+        return oStream << physicalNumber->number << "[TON]";
+    }
+    else{
+        throw std::invalid_argument( "Invalid unit data\n" );
+    }
 }
 //IStream
-friend istream& ariel::PhysicalNumber::operator>> (istream& iStream, PhysicalNumber& physicalNumber){
-    return *istream;
+istream& ariel::operator>>(istream& iStream, PhysicalNumber& physicalNumber){
+    string myString="";
+    string subString="";
+    string num="";
+    bool flag=true;
+    double stringNum=0;
+    iStream >> myString;
+    int open = 0;
+    int close = 0;
+    open = myString.find("[");
+    close = myString.find("]");
+    if ((open != string::npos) && (close != string::npos)){
+        subString = myString.substr(open + 1, close - 1);
+        if(subString == "CM" ){
+            physicalNumber->unit = Unit::CM;
+        }
+        else if(subString =="M"){
+            physicalNumber->unit = Unit::M;
+        }
+        else if(subString =="KM"){
+            physicalNumber->unit = Unit::KM;
+        }
+        else if(subString =="SEC"){
+            physicalNumber->unit = Unit::SEC;
+        }
+        else if(subString =="MIN"){
+            physicalNumber->unit = Unit::MIN;
+        }
+        else if(subString =="HOUR"){
+            physicalNumber->unit = Unit::HOUR;
+        }
+        else if(subString =="G"){
+            physicalNumber->unit = Unit::G;
+        }
+        else if(subString =="KG"){
+            physicalNumber->unit = Unit::KG;
+        }
+        else if(subString =="TON"){
+            physicalNumber->unit = Unit::TON;
+        }
+        else{
+            flag = false;
+            auto errorState = iStream.rdstate();
+        }
+        num = myString.substr(0, open);
+        if (flag){
+            try
+            {
+                stringNum = stod(num);
+            }
+
+            catch (exception &e)
+            {
+                auto errorState = iStream.rdstate(); // remember error state
+                return iStream;
+            }
+            physicalNumber->number = stringNum;
+        }
+    else{
+         auto errorState = iStream.rdstate();
+    }
+    return iStream;
 }
+
 //end - Strams Functions
 
 //
 //Add one to number/Subtract one of number
 //
 //Operator ++
-ariel::PhysicalNumber::PhysicalNumber& ariel::PhysicalNumber::operator++(){
+PhysicalNumber& PhysicalNumber::operator++(){
     this->number = this->number+1;
     return *this;
 }
 //Operator --
-ariel::PhysicalNumber::PhysicalNumber& ariel::PhysicalNumber::operator--(){
+PhysicalNumber& PhysicalNumber::operator--(){
     this->number = this->number-1;
     return *this;
 }
