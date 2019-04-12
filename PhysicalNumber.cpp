@@ -242,7 +242,7 @@ bool PhysicalNumber::operator<(const PhysicalNumber& physicalNumber) const{
     if(isValid(*this, physicalNumber)){
         double converted = convertUnit(*this, physicalNumber);
         if(this->number < converted){
-            returh true;
+            return true;
         }
         else{
             return false;
@@ -257,7 +257,7 @@ bool PhysicalNumber::operator>(const PhysicalNumber& physicalNumber) const{
     if(isValid(*this, physicalNumber)){
         double converted = convertUnit(*this, physicalNumber);
         if(this->number > converted){
-            returh true;
+            return true;
         }
         else{
             return false;
@@ -380,31 +380,31 @@ istream& ariel::operator>>(istream& iStream, PhysicalNumber& physicalNumber){
     if ((open != string::npos) && (close != string::npos)){
         subString = myString.substr(open + 1, close - 1);
         if(subString == "CM" ){
-            physicalNumber->unit = Unit::CM;
+            physicalNumber.unit = Unit::CM;
         }
         else if(subString =="M"){
-            physicalNumber->unit = Unit::M;
+            physicalNumber.unit = Unit::M;
         }
         else if(subString =="KM"){
-            physicalNumber->unit = Unit::KM;
+            physicalNumber.unit = Unit::KM;
         }
         else if(subString =="SEC"){
-            physicalNumber->unit = Unit::SEC;
+            physicalNumber.unit = Unit::SEC;
         }
         else if(subString =="MIN"){
-            physicalNumber->unit = Unit::MIN;
+            physicalNumber.unit = Unit::MIN;
         }
         else if(subString =="HOUR"){
-            physicalNumber->unit = Unit::HOUR;
+            physicalNumber.unit = Unit::HOUR;
         }
         else if(subString =="G"){
-            physicalNumber->unit = Unit::G;
+            physicalNumber.unit = Unit::G;
         }
         else if(subString =="KG"){
-            physicalNumber->unit = Unit::KG;
+            physicalNumber.unit = Unit::KG;
         }
         else if(subString =="TON"){
-            physicalNumber->unit = Unit::TON;
+            physicalNumber.unit = Unit::TON;
         }
         else{
             flag = false;
