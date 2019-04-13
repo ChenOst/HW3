@@ -25,7 +25,7 @@ int main() {
     PhysicalNumber d(30, Unit::MIN);
 
     PhysicalNumber pn1(25, Unit::CM);
-    PhysicalNumber pn2(5, Unit::M);
+    PhysicalNumber pn2(520, Unit::M);
     PhysicalNumber pn3(13, Unit::KM);
     PhysicalNumber pn4(7, Unit::SEC);
     PhysicalNumber pn5(9, Unit::MIN);
@@ -60,6 +60,81 @@ int main() {
     .CHECK_OUTPUT((a += PhysicalNumber(1, Unit::TON)), "1700[kg]")
 
     // YOUR TESTS - INSERT AS MANY AS YOU WANT
+    .CHECK_OUTPUT(pn2+pn3, "13520[m]")
+    .CHECK_OUTPUT(pn4+pn5, "547[sec]")
+    .CHECK_OUTPUT(pn9+pn8, "84.14[ton]")
+
+    .CHECK_THROWS(pn1+pn4)
+    .CHECK_THROWS(pn2+pn5)
+    .CHECK_THROWS(pn3+pn6)
+    .CHECK_THROWS(pn4+pn7)
+    .CHECK_THROWS(pn5+pn8)
+    .CHECK_THROWS(pn6+pn9)
+
+    .CHECK_THROWS(pn1-pn9)
+    .CHECK_THROWS(pn2-pn8)
+    .CHECK_THROWS(pn4-pn3)
+    .CHECK_THROWS(pn5-pn2)
+    .CHECK_THROWS(pn6-pn3)
+    .CHECK_THROWS(pn3-pn9)
+
+    .CHECK_THROWS(pn1+=pn7)
+    .CHECK_THROWS(pn3+=pn5)
+    .CHECK_THROWS(pn7+=pn6)
+    .CHECK_THROWS(pn4+=pn9)
+    .CHECK_THROWS(pn2+=pn8)
+    .CHECK_THROWS(pn4+=pn2)
+
+    .CHECK_THROWS(pn7-=pn3)
+    .CHECK_THROWS(pn4-=pn7)
+    .CHECK_THROWS(pn6-=pn1)
+    .CHECK_THROWS(pn3-=pn8)
+    .CHECK_THROWS(pn5-=pn8)
+    .CHECK_THROWS(pn9-=pn6)
+
+    .CHECK_THROWS(pn7==pn1)
+    .CHECK_THROWS(pn4==pn2)
+    .CHECK_THROWS(pn3==pn5)
+    .CHECK_THROWS(pn6==pn3)
+    .CHECK_THROWS(pn2==pn8)
+    .CHECK_THROWS(pn1==pn5)
+
+    .CHECK_THROWS(pn9!=pn6)
+    .CHECK_THROWS(pn4!=pn8)
+    .CHECK_THROWS(pn1!=pn4)
+    .CHECK_THROWS(pn6!=pn9)
+    .CHECK_THROWS(pn7!=pn2)
+    .CHECK_THROWS(pn1!=pn7)
+
+    .CHECK_THROWS(pn2<=pn8)
+    .CHECK_THROWS(pn4<=pn3)
+    .CHECK_THROWS(pn2<=pn8)
+    .CHECK_THROWS(pn4<=pn3)
+    .CHECK_THROWS(pn2<=pn8)
+    .CHECK_THROWS(pn4<=pn3)
+
+    .CHECK_THROWS(pn5>=pn8)
+    .CHECK_THROWS(pn4>=pn3)
+    .CHECK_THROWS(pn6>=pn7)
+    .CHECK_THROWS(pn9>=pn1)
+    .CHECK_THROWS(pn2>=pn4)
+    .CHECK_THROWS(pn7>=pn1)
+
+    .CHECK_THROWS(pn2<pn4)
+    .CHECK_THROWS(pn4<pn7)
+    .CHECK_THROWS(pn1<pn4)
+    .CHECK_THROWS(pn4<pn3)
+    .CHECK_THROWS(pn2<pn5)
+    .CHECK_THROWS(pn4<pn7)
+
+    .CHECK_THROWS(pn6>pn8)
+    .CHECK_THROWS(pn5>pn9)
+    .CHECK_THROWS(pn2>pn5)
+    .CHECK_THROWS(pn4>pn9)
+    .CHECK_THROWS(pn1>pn8)
+    .CHECK_THROWS(pn2>pn6)
+
+    
   
       .setname("...")
 

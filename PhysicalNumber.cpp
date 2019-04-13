@@ -239,12 +239,7 @@ PhysicalNumber PhysicalNumber::operator-() const{
 bool PhysicalNumber::operator<(const PhysicalNumber& physicalNumber) const{
     if(isValid(*this, physicalNumber)){
         double converted = convertUnit(*this, physicalNumber);
-        if(this->number < converted){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return(this->number < converted);
     }
     else{
         throw std::invalid_argument( "Invalid unit data\n" );
@@ -254,12 +249,7 @@ bool PhysicalNumber::operator<(const PhysicalNumber& physicalNumber) const{
 bool PhysicalNumber::operator>(const PhysicalNumber& physicalNumber) const{
     if(isValid(*this, physicalNumber)){
         double converted = convertUnit(*this, physicalNumber);
-        if(this->number > converted){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return(this->number > converted);
     }
     else{
         throw std::invalid_argument( "Invalid unit data\n" );
@@ -269,12 +259,7 @@ bool PhysicalNumber::operator>(const PhysicalNumber& physicalNumber) const{
 bool PhysicalNumber::operator<=(const PhysicalNumber& physicalNumber) const{
     if(isValid(*this, physicalNumber)){
         double converted = convertUnit(*this, physicalNumber);
-        if(this->number <= converted){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return(this->number <= converted);
     }
     else{
         throw std::invalid_argument( "Invalid unit data\n" );
@@ -284,12 +269,7 @@ bool PhysicalNumber::operator<=(const PhysicalNumber& physicalNumber) const{
 bool PhysicalNumber::operator>=(const PhysicalNumber& physicalNumber) const{
     if(isValid(*this, physicalNumber)){
         double converted = convertUnit(*this, physicalNumber);
-        if(this->number >= converted){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return(this->number >= converted);
     }
     else{
         throw std::invalid_argument( "Invalid unit data\n" );
@@ -299,12 +279,7 @@ bool PhysicalNumber::operator>=(const PhysicalNumber& physicalNumber) const{
 bool PhysicalNumber::operator==(const PhysicalNumber& physicalNumber) const{
     if(isValid(*this, physicalNumber)){
         double converted = convertUnit(*this, physicalNumber);
-        if(this->number == converted){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return(this->number == converted);
     }
     else{
         throw std::invalid_argument( "Invalid unit data\n" );
@@ -314,12 +289,7 @@ bool PhysicalNumber::operator==(const PhysicalNumber& physicalNumber) const{
 bool PhysicalNumber::operator!=(const PhysicalNumber& physicalNumber) const{
     if(isValid(*this, physicalNumber)){
         double converted = convertUnit(*this, physicalNumber);
-        if(this->number != converted){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return(this->number != converted);
     }
     else{
         throw std::invalid_argument( "Invalid unit data\n" );
@@ -347,35 +317,36 @@ PhysicalNumber& PhysicalNumber::operator--(){
 //OStream
 ostream& ariel::operator<<(ostream& oStream, const PhysicalNumber& physicalNumber){
     if(physicalNumber.unit==Unit::CM){
-        return oStream << physicalNumber.number << "[cm]";
+        oStream << physicalNumber.number << "[cm]";
     }
     else if(physicalNumber.unit==Unit::M){
-        return oStream << physicalNumber.number << "[m]";
+        oStream << physicalNumber.number << "[m]";
     }
     else if(physicalNumber.unit==Unit::KM){
-        return oStream << physicalNumber.number << "[km]";
+       oStream << physicalNumber.number << "[km]";
     }
     else if(physicalNumber.unit==Unit::SEC){
-        return oStream << physicalNumber.number << "[sec]";
+        oStream << physicalNumber.number << "[sec]";
     }
     else if(physicalNumber.unit==Unit::MIN){
-        return oStream << physicalNumber.number << "[min]";
+        oStream << physicalNumber.number << "[min]";
     }
     else if(physicalNumber.unit==Unit::HOUR){
-        return oStream << physicalNumber.number << "[hour]";
+        oStream << physicalNumber.number << "[hour]";
     }
     else if(physicalNumber.unit==Unit::G){
-        return oStream << physicalNumber.number << "[g]";
+        oStream << physicalNumber.number << "[g]";
     }
     else if(physicalNumber.unit==Unit::KG){
-        return oStream << physicalNumber.number << "[kg]";
+        oStream << physicalNumber.number << "[kg]";
     }
     else if(physicalNumber.unit==Unit::TON){
-        return oStream << physicalNumber.number << "[ton]";
+        oStream << physicalNumber.number << "[ton]";
     }
     else{
         throw std::invalid_argument( "Invalid unit data\n" );
     }
+    return oStream;
 }
 //IStream
 istream& ariel::operator>>(istream& iStream, PhysicalNumber& physicalNumber){
