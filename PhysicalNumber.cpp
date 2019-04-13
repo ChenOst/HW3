@@ -431,11 +431,11 @@ istream& ariel::operator>>(istream& iStream, PhysicalNumber& physicalNumber){
 
             catch (exception &e)
             {
-                auto errorState = iStream.rdstate(); // remember error state
+                auto errorState = iStream.rdstate();
                 return iStream;
             }
             physicalNumber.number = stringNum;
-        }
+        }  
     }
     else{
          auto errorState = iStream.rdstate();
@@ -444,5 +444,6 @@ istream& ariel::operator>>(istream& iStream, PhysicalNumber& physicalNumber){
 }
 
 //end - Strams Functions
+
 
 
