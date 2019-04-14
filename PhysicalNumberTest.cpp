@@ -63,7 +63,8 @@ int main() {
     .CHECK_OUTPUT(pn2+pn3, "13520[m]")
     .CHECK_OUTPUT(pn4+pn5, "547[sec]")
     .CHECK_OUTPUT(pn9+pn8, "84.14[ton]")
-
+    .CHECK_EQUAL(pn1!=pn3, true)
+    
     .CHECK_THROWS(pn1+pn4)
     .CHECK_THROWS(pn2+pn5)
     .CHECK_THROWS(pn3+pn6)
@@ -134,8 +135,6 @@ int main() {
     .CHECK_THROWS(pn1>pn8)
     .CHECK_THROWS(pn2>pn6)
 
-    
-  
       .setname("...")
 
       .print(cout, /*show_grade=*/false);

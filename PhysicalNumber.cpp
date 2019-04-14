@@ -277,6 +277,7 @@ bool PhysicalNumber::operator>=(const PhysicalNumber& physicalNumber) const{
 }
 //Operator ==
 bool PhysicalNumber::operator==(const PhysicalNumber& physicalNumber) const{
+
     if(isValid(*this, physicalNumber)){
         double converted = convertUnit(*this, physicalNumber);
         return(this->number == converted);
@@ -305,10 +306,20 @@ PhysicalNumber& PhysicalNumber::operator++(){
     this->number = this->number+1;
     return *this;
 }
+PhysicalNumber& PhysicalNumber::operator++(int){
+    PhysicalNumber ret(*this);
+    this->number++;
+    return ret;
+}
 //Operator --
 PhysicalNumber& PhysicalNumber::operator--(){
     this->number = this->number-1;
     return *this;
+}
+PhysicalNumber& PhysicalNumber::operator--(int){
+    PhysicalNumber ret(*this);
+    this->number--;
+    return ret;
 }
 
 //

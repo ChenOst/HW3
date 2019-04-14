@@ -2,6 +2,7 @@
 #include "Unit.h"
 using std::ostream;
 using std::istream;
+using std::istringstream;
 
 namespace ariel{
     class PhysicalNumber{
@@ -34,11 +35,13 @@ namespace ariel{
 
             PhysicalNumber& operator++();
             PhysicalNumber& operator--();
-        
+            PhysicalNumber& operator++(int);
+            PhysicalNumber& operator--(int);
+
             double convertUnit(const PhysicalNumber& physicalNumber1, const PhysicalNumber& physicalNumber2) const;
     };
-            ostream& operator<<(ostream& oStream, const PhysicalNumber& physicalNumber);
-            istream& operator>>(istream& iStream, PhysicalNumber& physicalNumber);
+        ostream& operator<<(ostream& oStream, const PhysicalNumber& physicalNumber);
+        istream& operator>>(istream& iStream, PhysicalNumber& physicalNumber); 
 
 };
 
